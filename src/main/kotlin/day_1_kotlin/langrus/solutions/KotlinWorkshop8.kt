@@ -9,6 +9,8 @@ fun main(){
     val p = Person("45-45-45")
 
     lst.replacePlacesWithThePhoneCode(p, 4)
+
+    print(lst)
 }
 
 

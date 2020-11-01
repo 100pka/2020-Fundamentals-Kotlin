@@ -28,28 +28,31 @@ object KotlinWorkshop7 {
         // TODO 1: Распечатай "poem" в двух вариантах:
         //  1. Только отфильтрованные строки длиной короче 12 символов;
         //  2. Все строки в обратном порядке.
-        /*
-        val filtered = ...
-        val reversed = ...
+
+        val filtered = poem.filter { it.length < 12 }
+        val reversed = poem.map { it.reversed() }
         println(filtered)
         reversed.forEach { println(it) }
         println(reversed)
-        * */
+
 
         // TODO 2: Раскомментируй.
         //  Инициализируй переменную с коллекцией чисел "evenList"
         //  и добавь в неё только чётные числа в диапазоне от 0 до 50, включая 0.
-        /*
-        val evenList = ...
-        for (i in 0..50) {
+
+        val evenList = mutableListOf<Int>()
+        for (i in 0..50 step 2) {
+            if (i%2 == 0) {
+                evenList.add(i)
+            }
         }
         println(evenList)
-        */
+
 
 
 
         // Не исправляй! Дано:
-        val weatherMap = mapOf(
+        val weatherMap = mutableMapOf(
             "Moscow" to 2,
             "St. Petersburg" to -1,
             "Minsk" to 4
@@ -60,10 +63,13 @@ object KotlinWorkshop7 {
         /* Бонусные задания */
 
         // TODO 3. В погодную карту "weatherMap" добавь погоду в "Kiev" и в "Tel-Aviv".
-//        weatherMap... =
+        weatherMap["Kiev"] = 15
+        weatherMap["Tel-Aviv"] = 30
+
 
         // TODO 4. Отфильтруй и выведи в консоль города с погодой выше +0С.
         //  Вызывай операторы один за другим, в виде "цепи" (chaining operators).
-//        weatherMap
+        weatherMap.filter { it.value > 0 }
+            .forEach{ println(it.key) }
     }
 }

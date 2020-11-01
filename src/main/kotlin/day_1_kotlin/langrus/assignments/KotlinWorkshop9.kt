@@ -9,10 +9,10 @@ fun main() {
     val p = Programmer<Kotlin>()
 
     //TODO: uncomment all
-//    p.learn(Kotlin("basics"))
-//
-//    p.learn(Kotlin("generics"))
-//    p.learn(Kotlin("coroutines"))
+    p.learn(Kotlin("basics"))
+
+    p.learn(Kotlin("generics"))
+    p.learn(Kotlin("coroutines"))
 
     println(p.howManyConceptsDoIKnow())
     // should be equal to 3
@@ -28,13 +28,22 @@ fun main() {
 
 class Programmer<T: Language>() {
 
-    fun howManyConceptsDoIKnow(): Int = TODO()
+    private val concepts = mutableListOf<T>()
+
+    fun howManyConceptsDoIKnow(): Int = concepts.size
 
     // TODO: add "learn" function with new concept
+    fun learn(languageConcept: T) {
+        concepts.add(languageConcept)
+    }
 
     //TODO: add "forget" function with one concept to forget
 
-    fun lastConcept(): T = TODO()
+    fun forget(languageConcept: T) {
+        concepts.remove(languageConcept)
+    }
+
+    fun lastConcept(): T = concepts.last()
 }
 
 interface Language{
